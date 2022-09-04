@@ -42,9 +42,9 @@
             // 
             this.lstBox.FormattingEnabled = true;
             this.lstBox.ItemHeight = 15;
-            this.lstBox.Location = new System.Drawing.Point(422, 28);
+            this.lstBox.Location = new System.Drawing.Point(367, 28);
             this.lstBox.Name = "lstBox";
-            this.lstBox.Size = new System.Drawing.Size(348, 274);
+            this.lstBox.Size = new System.Drawing.Size(403, 334);
             this.lstBox.TabIndex = 0;
             this.lstBox.SelectedIndexChanged += new System.EventHandler(this.lstBox_SelectedIndexChanged);
             // 

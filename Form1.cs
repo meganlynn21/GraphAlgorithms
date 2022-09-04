@@ -32,17 +32,18 @@ namespace GraphAlgorithms
 
         private void AllFlightsBtn_Click(object sender, EventArgs e)
         {
-            WebClient client = new WebClient(); // needs using System.Net;
-            string url = "https://data.transportation.gov/resource/4f3n-jbg2.json?year=2021";
-            string webPage = client.DownloadString(url);
-            webPage.Replace("[", "").Replace("]", "");
-            var deserialize = (JArray)JsonConvert.DeserializeObject(webPage, typeof(JArray));
+            //WebClient client = new WebClient(); 
+            //string url = "https://data.transportation.gov/resource/4f3n-jbg2.json?year=2021";
+            //string webPage = client.DownloadString(url);
+            ////webPage.Replace("[", "").Replace("]", "");
+            //var deserialize = (JArray)JsonConvert.DeserializeObject(webPage, typeof(JArray));
 
-            foreach (JObject obj in deserialize)
-            {
-
-                lstBox.Items.Add("" + obj);
-            }
+            //foreach (JObject obj in deserialize)
+            //{
+            //    lstBox.Items.Add("" + obj);
+            //}
+            Flight flight = new Flight();
+            flight.GetApiData();
         }
 
     }

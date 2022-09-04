@@ -1,20 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml.Linq;
+using System.Text.Json;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.IO;
+using Microsoft.Xrm.Sdk.Messages;
+using System.Runtime.ConstrainedExecution;
 
 namespace GraphAlgorithms
 {
-    internal class Flight
+    public class Flight
     {
-        // Make Variables city1, city2, year, fare, passengers,
-        // and miles matching the attribute names in the JSON.
-        // Then you can read in the JSON data into a List<Flight>.
-        public string City1 { get; set; }
-        public string City2 { get; set; }
-        public int Year { get; set; }
-        public double Fares { get; set; }
-        public double Passengers { get; set; }
-        public double Miles { get; set; }
 
+        [JsonProperty("year")]
+        public string Year { get; set; }
+
+        [JsonProperty("city1")]
+        public string City1 { get; set; }
+
+        [JsonProperty("city2")]
+        public string City2 { get; set; }
+
+        [JsonProperty("nsmiles")]
+        public string Miles { get; set; }
+
+        [JsonProperty("passengers")]
+        public string Passengers { get; set; }
+
+        [JsonProperty("fare")]
+        public string Fare { get; set; }
+
+        public void GetApiData()
+        {
+            WebClient client = new WebClient();
+            string url = "https://data.transportation.gov/resource/4f3n-jbg2.json?year=2021";
+            string webPage = client.DownloadString(url);
+            List<Flight> items = JsonConvert.DeserializeObject<List<Flight>>(webPage);
+            foreach (var item in items)
+            {
+                Console.Write(item.City1);
+                Console.Write(item.City2 + ":");
+                Console.WriteLine(" " + "$" + item.Fare);
+            }
+
+            Console.ReadLine();
+
+        }
     }
+
+
 }
+
+
+
+

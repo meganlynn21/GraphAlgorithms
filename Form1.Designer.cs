@@ -116,6 +116,7 @@
             this.connectingFlightsBtn.TabIndex = 3;
             this.connectingFlightsBtn.Text = "Connecting Flights";
             this.connectingFlightsBtn.UseVisualStyleBackColor = true;
+            this.connectingFlightsBtn.Click += new System.EventHandler(this.connectingFlightsBtn_Click);
             // 
             // Form1
             // 
@@ -143,8 +144,8 @@
         private System.Windows.Forms.ListBox lstBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox fromTxtBox;
-        private System.Windows.Forms.TextBox toTxtBox;
+        public System.Windows.Forms.TextBox fromTxtBox;
+        public System.Windows.Forms.TextBox toTxtBox;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button AllFlightsBtn;
         private System.Windows.Forms.Button connectingFlightsBtn;

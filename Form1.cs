@@ -1,15 +1,27 @@
 ﻿using Newtonsoft.Json.Linq;
+using NPOI.POIFS.Crypt.Dsig;
+using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GraphAlgorithms
 {
     public partial class Form1 : Form
     {
         Flight flight = new Flight();
-
+        Form frm = new Form();
+        // Getting values of textboxes so I can use in Graph class
+        public string ToTxtBox
+        {
+            get { return toTxtBox.Text; }
+        }
+        public string FromTxtBox
+        {
+            get { return fromTxtBox.Text; }
+        }
         public Form1()
         {
             InitializeComponent();
@@ -35,9 +47,8 @@ namespace GraphAlgorithms
             var fromTxt = fromTxtBox.Text;
 
             var apiData = flight.GetApiData();
-            
+
             foreach (Flight flight in apiData)
-            //(int i = 0; i < students.Count; i++)
             {
                 if (flight.City1.Contains(fromTxt) && flight.City2.Contains(toTxt))
                 {
@@ -46,6 +57,19 @@ namespace GraphAlgorithms
                 }
             }
 
+        }
+
+        private void connectingFlightsBtn_Click(object sender, EventArgs e)
+        {
+            Graph graph = new Graph();
+            var data = graph.GetConnectingFlights(FromTxtBox,ToTxtBox);
+            lstBox.Items.Add(data);
+            foreach (var item in data)
+            {
+                lstBox.Items.Add($"{item}");
+
+            }
+            
         }
     }
 }

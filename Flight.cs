@@ -1,22 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
 using System.Text.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.IO;
-using Microsoft.Xrm.Sdk.Messages;
-using System.Runtime.ConstrainedExecution;
 
 namespace GraphAlgorithms
 {
@@ -41,26 +29,18 @@ namespace GraphAlgorithms
         [JsonProperty("fare")]
         public string Fare { get; set; }
 
-        public void GetApiData()
+
+        public List<Flight> GetApiData()
         {
             WebClient client = new WebClient();
             string url = "https://data.transportation.gov/resource/4f3n-jbg2.json?year=2021";
             string webPage = client.DownloadString(url);
             List<Flight> items = JsonConvert.DeserializeObject<List<Flight>>(webPage);
-            foreach (var item in items)
-            {
-                Console.Write(item.City1);
-                Console.Write(item.City2 + ":");
-                Console.WriteLine(" " + "$" + item.Fare);
-            }
-
-            Console.ReadLine();
-
+            return items;
         }
     }
-
-
 }
+
 
 
 

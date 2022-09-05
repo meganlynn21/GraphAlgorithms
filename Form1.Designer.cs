@@ -31,96 +31,106 @@
             this.lstBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.SearchBtn = new System.Windows.Forms.Button();
+            this.fromTxtBox = new System.Windows.Forms.TextBox();
+            this.toTxtBox = new System.Windows.Forms.TextBox();
+            this.searchBtn = new System.Windows.Forms.Button();
             this.AllFlightsBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.connectingFlightsBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstBox
             // 
             this.lstBox.FormattingEnabled = true;
-            this.lstBox.ItemHeight = 15;
-            this.lstBox.Location = new System.Drawing.Point(367, 28);
+            this.lstBox.ItemHeight = 25;
+            this.lstBox.Location = new System.Drawing.Point(524, 47);
+            this.lstBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lstBox.Name = "lstBox";
-            this.lstBox.Size = new System.Drawing.Size(403, 334);
+            this.lstBox.Size = new System.Drawing.Size(574, 554);
             this.lstBox.TabIndex = 0;
             this.lstBox.SelectedIndexChanged += new System.EventHandler(this.lstBox_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 85);
+            this.label1.Location = new System.Drawing.Point(31, 142);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 15);
+            this.label1.Size = new System.Drawing.Size(39, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "To: ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 28);
+            this.label2.Location = new System.Drawing.Point(31, 47);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 15);
+            this.label2.Size = new System.Drawing.Size(63, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "From: ";
             // 
-            // textBox1
+            // fromTxtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(69, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 23);
-            this.textBox1.TabIndex = 2;
+            this.fromTxtBox.Location = new System.Drawing.Point(99, 42);
+            this.fromTxtBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.fromTxtBox.Name = "fromTxtBox";
+            this.fromTxtBox.Size = new System.Drawing.Size(224, 31);
+            this.fromTxtBox.TabIndex = 2;
             // 
-            // textBox2
+            // toTxtBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(69, 77);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(158, 23);
-            this.textBox2.TabIndex = 2;
+            this.toTxtBox.Location = new System.Drawing.Point(99, 136);
+            this.toTxtBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.toTxtBox.Name = "toTxtBox";
+            this.toTxtBox.Size = new System.Drawing.Size(224, 31);
+            this.toTxtBox.TabIndex = 2;
             // 
-            // SearchBtn
+            // searchBtn
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(69, 131);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(89, 23);
-            this.SearchBtn.TabIndex = 3;
-            this.SearchBtn.Text = "Search";
-            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Location = new System.Drawing.Point(99, 218);
+            this.searchBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(127, 38);
+            this.searchBtn.TabIndex = 3;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // AllFlightsBtn
             // 
-            this.AllFlightsBtn.Location = new System.Drawing.Point(260, 40);
+            this.AllFlightsBtn.Location = new System.Drawing.Point(371, 67);
+            this.AllFlightsBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AllFlightsBtn.Name = "AllFlightsBtn";
-            this.AllFlightsBtn.Size = new System.Drawing.Size(87, 47);
+            this.AllFlightsBtn.Size = new System.Drawing.Size(124, 78);
             this.AllFlightsBtn.TabIndex = 3;
             this.AllFlightsBtn.Text = "All Flights";
             this.AllFlightsBtn.UseVisualStyleBackColor = true;
             this.AllFlightsBtn.Click += new System.EventHandler(this.AllFlightsBtn_Click);
             // 
-            // button1
+            // connectingFlightsBtn
             // 
-            this.button1.Location = new System.Drawing.Point(69, 181);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.connectingFlightsBtn.Location = new System.Drawing.Point(99, 302);
+            this.connectingFlightsBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.connectingFlightsBtn.Name = "connectingFlightsBtn";
+            this.connectingFlightsBtn.Size = new System.Drawing.Size(196, 38);
+            this.connectingFlightsBtn.TabIndex = 3;
+            this.connectingFlightsBtn.Text = "Connecting Flights";
+            this.connectingFlightsBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1143, 750);
             this.Controls.Add(this.AllFlightsBtn);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.SearchBtn);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.connectingFlightsBtn);
+            this.Controls.Add(this.searchBtn);
+            this.Controls.Add(this.toTxtBox);
+            this.Controls.Add(this.fromTxtBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lstBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -133,10 +143,10 @@
         private System.Windows.Forms.ListBox lstBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button SearchBtn;
+        private System.Windows.Forms.TextBox fromTxtBox;
+        private System.Windows.Forms.TextBox toTxtBox;
+        private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button AllFlightsBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button connectingFlightsBtn;
     }
 }

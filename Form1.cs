@@ -1,26 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using System.Text.Json;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.IO;
-using Microsoft.Xrm.Sdk.Messages;
 
 namespace GraphAlgorithms
 {
     public partial class Form1 : Form
     {
+        Flight flight = new Flight();
+
         public Form1()
         {
             InitializeComponent();
@@ -32,20 +21,32 @@ namespace GraphAlgorithms
 
         private void AllFlightsBtn_Click(object sender, EventArgs e)
         {
-            //WebClient client = new WebClient(); 
-            //string url = "https://data.transportation.gov/resource/4f3n-jbg2.json?year=2021";
-            //string webPage = client.DownloadString(url);
-            ////webPage.Replace("[", "").Replace("]", "");
-            //var deserialize = (JArray)JsonConvert.DeserializeObject(webPage, typeof(JArray));
+            var apiData = flight.GetApiData();
 
-            //foreach (JObject obj in deserialize)
-            //{
-            //    lstBox.Items.Add("" + obj);
-            //}
-            Flight flight = new Flight();
-            flight.GetApiData();
+            foreach (var item in apiData)
+            {
+                lstBox.Items.Add($"{item.City1} to {item.City2}: ${item.Fare}");
+            }
         }
 
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            var toTxt = toTxtBox.Text;
+            var fromTxt = fromTxtBox.Text;
+
+            var apiData = flight.GetApiData();
+            
+            foreach (Flight flight in apiData)
+            //(int i = 0; i < students.Count; i++)
+            {
+                if (flight.City1.Contains(fromTxt) && flight.City2.Contains(toTxt))
+                {
+                    lstBox.Items.Clear();
+                    lstBox.Items.Add($"{flight.City1} to {flight.City2}: ${flight.Fare}");
+                }
+            }
+
+        }
     }
 }
 

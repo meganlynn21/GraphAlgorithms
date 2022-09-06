@@ -1,11 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
-using NPOI.POIFS.Crypt.Dsig;
-using NPOI.SS.UserModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace GraphAlgorithms
 {
@@ -13,6 +9,7 @@ namespace GraphAlgorithms
     {
         Flight flight = new Flight();
         Form frm = new Form();
+        public bool HorizontalScrollbar { get; set; }
         // Getting values of textboxes so I can use in Graph class
         public string ToTxtBox
         {
@@ -21,6 +18,11 @@ namespace GraphAlgorithms
         public string FromTxtBox
         {
             get { return fromTxtBox.Text; }
+        }
+        // Getting ListBox value
+        public string ListBox
+        {
+            get { return lst.Text; }
         }
         public Form1()
         {
@@ -33,16 +35,19 @@ namespace GraphAlgorithms
 
         private void AllFlightsBtn_Click(object sender, EventArgs e)
         {
+            ListBox lst = new ListBox();
+            lst.Items.Clear();
             var apiData = flight.GetApiData();
 
             foreach (var item in apiData)
             {
-                lstBox.Items.Add($"{item.City1} to {item.City2}: ${item.Fare}");
+                this.lst.Items.Add($"{item.City1} to {item.City2}: ${item.Fare}");
             }
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
+            lst.Items.Clear();
             var toTxt = toTxtBox.Text;
             var fromTxt = fromTxtBox.Text;
 
@@ -52,8 +57,8 @@ namespace GraphAlgorithms
             {
                 if (flight.City1.Contains(fromTxt) && flight.City2.Contains(toTxt))
                 {
-                    lstBox.Items.Clear();
-                    lstBox.Items.Add($"{flight.City1} to {flight.City2}: ${flight.Fare}");
+                    lst.Items.Clear();
+                    lst.Items.Add($"{flight.City1} to {flight.City2}: ${flight.Fare}");
                 }
             }
 
@@ -61,16 +66,39 @@ namespace GraphAlgorithms
 
         private void connectingFlightsBtn_Click(object sender, EventArgs e)
         {
+            lst.Items.Clear();
             Graph graph = new Graph();
-            var data = graph.GetConnectingFlights(FromTxtBox,ToTxtBox);
-            lstBox.Items.Add(data);
+            var data = graph.GetConnectingFlights(FromTxtBox, ToTxtBox);
             foreach (var item in data)
             {
-                lstBox.Items.Add($"{item}");
-
+                lst.Items.Add($"{item.City1} to {item.City2} ${item.Fare}");
             }
-            
+
+        }
+
+        private void hScrollBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            // Make sure no items are displayed partially.
+            lst.IntegralHeight = true;
+
+            // Add items that are wide to the ListBox.
+            for (int x = 0; x < 10; x++)
+            {
+                lst.Items.Add("Item  " + x.ToString() + " is a very large value that requires scroll bars");
+            }
+
+            // Display a horizontal scroll bar.
+            lst.HorizontalScrollbar = true;
+
+            // Create a Graphics object to use when determining the size of the largest item in the ListBox.
+            Graphics g = lst.CreateGraphics();
+
+            // Determine the size for HorizontalExtent using the MeasureString method using the last item in the list.
+            int hzSize = (int)g.MeasureString(lst.Items[lst.Items.Count - 1].ToString(), lst.Font).Width;
+            // Set the HorizontalExtent property.
+            lst.HorizontalExtent = hzSize;
         }
     }
 }
+
 

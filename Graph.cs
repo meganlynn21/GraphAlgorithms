@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Crypto.Tls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,8 +30,6 @@ namespace GraphAlgorithms
                     alreadyVisited.Add(f);
                 }
             }
-            Console.WriteLine(myStack);
-            Console.WriteLine(alreadyVisited);
             //While the stack data structure is not empty (use Count in C#)
             //and you haven’t found the destination city yet (use a boolean flag),
             //Pop the first flight(flight1)from the stack and print it out.
@@ -38,22 +37,19 @@ namespace GraphAlgorithms
 
             while (myStack.Count > 0 && flag == false)
             {
-                if (alreadyVisited.Any(n => n.City2 == totxt))
-                    flag = true;
-                //var alreadyInList = alreadyVisited.Find(x => (x.City2 == totxt))
                 var first = myStack.Pop();
                 myList.Add(first);
                 alreadyVisited.Add(first);
 
                 //Check if it’s the destination(city2) you are looking for.
                 //If it is, you’re done.Display the results.
-                if (totxt.Contains(first.City2))
+                if (first.City2.Contains(totxt))
                 {
                     var destination = first;
                     myList.Add(destination);
                     Console.WriteLine(destination);
                     // done return result
-                    break;
+                    flag = true;
                 }
                 //Else  For each flight2 in the flights
                 //If flight2’s city1 is equal to flight1’s city2 and it hasn’t been visited before,
@@ -63,16 +59,12 @@ namespace GraphAlgorithms
                 {
                     foreach (var fl in apiData)
                     {
-                        //(alreadyVisited.Any(n => n.City2 == totxt))
-                        if (fl.City1 == fl.City2 && alreadyVisited.Any(n => n.City2 == totxt))
+                        if (fl.City1 == first.City2 && !alreadyVisited.Contains(fl))
+                            if(fl.City2.Contains(totxt))
                         {
                             myStack.Push(fl);
-                            myList.Add(fl);
                         }
                     }
-                    Console.WriteLine(myStack);
-                    Console.WriteLine(alreadyVisited);
-                    Console.WriteLine(myList);
                 }
             }
             return myList;

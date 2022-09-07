@@ -36,7 +36,6 @@
             this.searchBtn = new System.Windows.Forms.Button();
             this.AllFlightsBtn = new System.Windows.Forms.Button();
             this.connectingFlightsBtn = new System.Windows.Forms.Button();
-            this.hScrollBar = new System.Windows.Forms.HScrollBar();
             this.SuspendLayout();
             // 
             // lst
@@ -127,21 +126,12 @@
             this.connectingFlightsBtn.UseVisualStyleBackColor = false;
             this.connectingFlightsBtn.Click += new System.EventHandler(this.connectingFlightsBtn_Click);
             // 
-            // hScrollBar
-            // 
-            this.hScrollBar.Location = new System.Drawing.Point(397, 681);
-            this.hScrollBar.Name = "hScrollBar";
-            this.hScrollBar.Size = new System.Drawing.Size(733, 39);
-            this.hScrollBar.TabIndex = 4;
-            this.hScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar_Scroll);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1143, 750);
-            this.Controls.Add(this.hScrollBar);
             this.Controls.Add(this.AllFlightsBtn);
             this.Controls.Add(this.connectingFlightsBtn);
             this.Controls.Add(this.searchBtn);
@@ -168,6 +158,5 @@
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button AllFlightsBtn;
         private System.Windows.Forms.Button connectingFlightsBtn;
-        private System.Windows.Forms.HScrollBar hScrollBar;
     }
 }

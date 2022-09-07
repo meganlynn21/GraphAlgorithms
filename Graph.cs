@@ -60,16 +60,15 @@ namespace GraphAlgorithms
                     foreach (var fl in apiData)
                     {
                         if (fl.City1 == first.City2 && !alreadyVisited.Contains(fl))
-                            if(fl.City2.Contains(totxt))
-                        {
-                            myStack.Push(fl);
-                        }
+                            if (fl.City2.Contains(totxt))
+                            {
+                                myStack.Push(fl);
+                            }
                     }
                 }
             }
             return myList;
         }
-
     }
 }
 
